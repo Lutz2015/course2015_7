@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+var str="1234567890abc0987654321";
+var reg=/\d/;
+//var a=reg.exec(str);
+//alert(a);
+//表示数量的元字符有：*表示前边的字符出现0到n次,+ 1到n次,? 是0到1次,{n} 表示指定出现n次,{m,n}出现m-n中的某一次
+//量词是修饰它前面的符号的，如果它前边没有字符
+reg=/\d+/;//普通的正则怎
+reg=/\d+?/;//?出现在量词的后边，非贪婪捕获
+reg=/\d??/;//问号?在正则的用法比较复杂，不同的位置有不同规则
+
+var a=reg.exec(str);//正则的特性：贪婪而懒惰
+//alert(a);
+
+reg=/\d+/;//在写在正则的后边的这个g，叫模式修正符。模式修正符有三个，g,m,i
+//g是global的缩写，全文匹配；m是multiple的缩写,多行匹配，用在字符串中出现/n等换行符的情况下； i是ignore的缩写，忽略大小写
+var a=str.match(reg);
+//alert(a);
+
+//表示边界的，并且实现严格匹配的元字符:^  $
+//^用在一个正则的开始，修饰它后边的实义字符，表示它后边的这个字符一定要出现在字符的开始的位置
+//$出现正则的结尾，表示它前边的那个字符一定要在字符串的结尾
+
+var reg1=/^\d+/;
+var reg2=/\d+$/;
+//alert(str.match(reg1));
+//alert(str.match(reg2));
+
+
+var str="1234567890abc0987654321";
+var reg3=/^\d+$/;//严格匹配完全是数字的字符串
+alert(reg3.test(str));
+</script>
+
+
+
+
+
+
+
+
